@@ -36,6 +36,6 @@ async def get_current_user():
 
 @app.get("/users/{user_id}")
 async def get_user(user_id: str):
-    return {"id": user_id,"name": "John Doe", "role": "minion"}
+    return {"id": user_id,"name": "John Doe", "role": "basic"}
 
 
