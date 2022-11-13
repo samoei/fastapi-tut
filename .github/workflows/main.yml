@@ -30,7 +30,8 @@ jobs:
           images: ${{ env.registry }}/${{ env.IMAGE_NAME }}
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        run: echo TAGS-> ${{ steps.meta.outputs.tags }}
         with:
           context: .
           push: true
-          tags: main
+          tags: ${{ steps.meta.outputs.tags }}
