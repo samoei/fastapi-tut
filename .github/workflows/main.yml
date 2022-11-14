@@ -53,7 +53,8 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-        run: docker run -dp 80:8005 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+      - name: Run image
+        run: docker run -dp 80:8005 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
       - name: Flake8
         run: python -m flake8 app
       - name: Black
