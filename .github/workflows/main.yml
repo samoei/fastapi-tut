@@ -54,7 +54,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Run image
-        run: docker run -dp 80:8005 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        run: docker run -dp 80:8005 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
       - name: Flake8
         run: python -m flake8 app
       - name: Black
