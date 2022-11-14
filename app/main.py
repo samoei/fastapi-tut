@@ -8,7 +8,9 @@ class Item(BaseModel):
     price: float
     tax: float = None
 
+
 app = FastAPI()
+
 
 @app.get("/")
 async def root():
@@ -31,11 +33,9 @@ async def create_item(item: Item):
 
 @app.get("/users/me")
 async def get_current_user():
-    return {"id": 1,"name": "Phil Samoei", "role": "admin"}
-        
+    return {"id": 1, "name": "Phil Samoei", "role": "admin"}
+
 
 @app.get("/users/{user_id}")
 async def get_user(user_id: str):
-    return {"id": user_id,"name": "John Doe", "role": "basic"}
-
-
+    return {"id": user_id, "name": "John Doe", "role": "basic"}
