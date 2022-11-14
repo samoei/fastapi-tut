@@ -53,14 +53,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Pull Image
-        run: |
-          echo docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
-          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-      - name: Build image
-        run: docker build --cache-from ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest .
-      - name: Run image
-        run: docker run -dp 80:8005 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        run: docker run -dp 80:8005 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
       - name: Flake8
         run: python -m flake8 app
       - name: Black
