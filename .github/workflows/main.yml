@@ -54,7 +54,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull Image
-        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        run: |
+          echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: Build image
         run: docker build --cache-from ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
       - name: Run image
